@@ -1,0 +1,5 @@
+bin/*
+!bin/.gitkeep
+obj/*.o
+test/*.png
+gmon.out

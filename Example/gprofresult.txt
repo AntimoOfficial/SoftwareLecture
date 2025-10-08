@@ -1,0 +1,804 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 54.21      0.13     0.13      100     1.30     1.30  Tiger::Eat()
+ 33.36      0.21     0.08  1048576     0.00     0.00  void __gnu_cxx::new_allocator<BigMem>::construct<BigMem, BigMem>(BigMem*, BigMem&&)
+  8.34      0.23     0.02      100     0.20     1.10  Wolf::Climb()
+  4.17      0.24     0.01  1048576     0.00     0.00  void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&)
+  0.00      0.24     0.00  3145749     0.00     0.00  BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&)
+  0.00      0.24     0.00  1048579     0.00     0.00  operator new(unsigned long, void*)
+  0.00      0.24     0.00  1048576     0.00     0.00  void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&)
+  0.00      0.24     0.00  1048576     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::push_back(BigMem&&)
+  0.00      0.24     0.00  1048576     0.00     0.00  std::remove_reference<BigMem&>::type&& std::move<BigMem&>(BigMem&)
+  0.00      0.24     0.00      812     0.00     0.00  __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::base() const
+  0.00      0.24     0.00      400     0.00     0.00  bool __gnu_cxx::operator!=<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&)
+  0.00      0.24     0.00      300     0.00     0.00  Wolf::Name[abi:cxx11]()
+  0.00      0.24     0.00      300     0.00     0.00  Mouse::Name[abi:cxx11]()
+  0.00      0.24     0.00      300     0.00     0.00  Tiger::Name[abi:cxx11]()
+  0.00      0.24     0.00      300     0.00     0.80  Animal::Live()
+  0.00      0.24     0.00      300     0.00     0.00  __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator++()
+  0.00      0.24     0.00      300     0.00     0.00  __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator*() const
+  0.00      0.24     0.00      206     0.00     0.00  __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::__normal_iterator(Animal** const&)
+  0.00      0.24     0.00      184     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::size() const
+  0.00      0.24     0.00      126     0.00     0.00  BigMem* std::__niter_base<BigMem*>(BigMem*)
+  0.00      0.24     0.00      103     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::end()
+  0.00      0.24     0.00      103     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::begin()
+  0.00      0.24     0.00      100     0.00     0.00  Wolf::Eat()
+  0.00      0.24     0.00      100     0.00     0.00  Wolf::Drink()
+  0.00      0.24     0.00      100     0.00     0.00  Mouse::Eat()
+  0.00      0.24     0.00      100     0.00     0.00  Mouse::Climb()
+  0.00      0.24     0.00      100     0.00     0.00  Mouse::Drink()
+  0.00      0.24     0.00      100     0.00     0.00  Tiger::Climb()
+  0.00      0.24     0.00      100     0.00     0.00  Tiger::Drink()
+  0.00      0.24     0.00       84     0.00     0.00  __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::base() const
+  0.00      0.24     0.00       63     0.00     0.00  __gnu_cxx::new_allocator<BigMem>::max_size() const
+  0.00      0.24     0.00       48     0.00     0.00  unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00      0.24     0.00       42     0.00     0.00  __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::__normal_iterator(BigMem* const&)
+  0.00      0.24     0.00       42     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() const
+  0.00      0.24     0.00       42     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::max_size() const
+  0.00      0.24     0.00       42     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator()
+  0.00      0.24     0.00       42     0.00     0.00  std::allocator_traits<std::allocator<BigMem> >::max_size(std::allocator<BigMem> const&)
+  0.00      0.24     0.00       42     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::_S_max_size(std::allocator<BigMem> const&)
+  0.00      0.24     0.00       42     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::_S_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&)
+  0.00      0.24     0.00       42     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::_S_do_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&, std::integral_constant<bool, true>)
+  0.00      0.24     0.00       42     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::_S_use_relocate()
+  0.00      0.24     0.00       42     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::_S_nothrow_relocate(std::integral_constant<bool, true>)
+  0.00      0.24     0.00       42     0.00     0.00  BigMem* std::__relocate_a<BigMem*, BigMem*, std::allocator<BigMem> >(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&)
+  0.00      0.24     0.00       42     0.00     0.00  std::enable_if<std::__is_bitwise_relocatable<BigMem, void>::value, BigMem*>::type std::__relocate_a_1<BigMem, BigMem>(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&)
+  0.00      0.24     0.00       24     0.00     0.00  unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  0.00      0.24     0.00       21     0.00     0.00  __gnu_cxx::new_allocator<BigMem>::allocate(unsigned long, void const*)
+  0.00      0.24     0.00       21     0.00     0.00  __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::difference_type __gnu_cxx::operator-<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&, __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&)
+  0.00      0.24     0.00       21     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const
+  0.00      0.24     0.00       21     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_allocate(unsigned long)
+  0.00      0.24     0.00       21     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_deallocate(BigMem*, unsigned long)
+  0.00      0.24     0.00       21     0.00     0.00  std::allocator_traits<std::allocator<BigMem> >::allocate(std::allocator<BigMem>&, unsigned long)
+  0.00      0.24     0.00       21     0.00     0.00  void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&)
+  0.00      0.24     0.00       21     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::end()
+  0.00      0.24     0.00       21     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::begin()
+  0.00      0.24     0.00       20     0.00     0.00  __gnu_cxx::new_allocator<BigMem>::deallocate(BigMem*, unsigned long)
+  0.00      0.24     0.00       20     0.00     0.00  std::allocator_traits<std::allocator<BigMem> >::deallocate(std::allocator<BigMem>&, BigMem*, unsigned long)
+  0.00      0.24     0.00       18     0.00     0.00  Animal** std::__niter_base<Animal**>(Animal**)
+  0.00      0.24     0.00       12     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::size() const
+  0.00      0.24     0.00        9     0.00     0.00  __gnu_cxx::new_allocator<Animal*>::max_size() const
+  0.00      0.24     0.00        9     0.00     0.00  Animal* const& std::forward<Animal* const&>(std::remove_reference<Animal* const&>::type&)
+  0.00      0.24     0.00        7     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator()
+  0.00      0.24     0.00        6     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() const
+  0.00      0.24     0.00        6     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::max_size() const
+  0.00      0.24     0.00        6     0.00     0.00  std::allocator_traits<std::allocator<Animal*> >::max_size(std::allocator<Animal*> const&)
+  0.00      0.24     0.00        6     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::_S_max_size(std::allocator<Animal*> const&)
+  0.00      0.24     0.00        6     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::_S_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&)
+  0.00      0.24     0.00        6     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::_S_do_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&, std::integral_constant<bool, true>)
+  0.00      0.24     0.00        6     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::_S_use_relocate()
+  0.00      0.24     0.00        6     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::_S_nothrow_relocate(std::integral_constant<bool, true>)
+  0.00      0.24     0.00        6     0.00     0.00  Animal** std::__relocate_a<Animal**, Animal**, std::allocator<Animal*> >(Animal**, Animal**, Animal**, std::allocator<Animal*>&)
+  0.00      0.24     0.00        6     0.00     0.00  std::enable_if<std::__is_bitwise_relocatable<Animal*, void>::value, Animal**>::type std::__relocate_a_1<Animal*, Animal*>(Animal**, Animal**, Animal**, std::allocator<Animal*>&)
+  0.00      0.24     0.00        4     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_deallocate(Animal**, unsigned long)
+  0.00      0.24     0.00        3     0.00     0.00  Animal::Animal()
+  0.00      0.24     0.00        3     0.00     0.00  __gnu_cxx::new_allocator<Animal*>::deallocate(Animal**, unsigned long)
+  0.00      0.24     0.00        3     0.00     0.00  __gnu_cxx::new_allocator<Animal*>::allocate(unsigned long, void const*)
+  0.00      0.24     0.00        3     0.00     0.00  void __gnu_cxx::new_allocator<Animal*>::construct<Animal*, Animal* const&>(Animal**, Animal* const&)
+  0.00      0.24     0.00        3     0.00     0.00  __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::difference_type __gnu_cxx::operator-<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&)
+  0.00      0.24     0.00        3     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const
+  0.00      0.24     0.00        3     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_allocate(unsigned long)
+  0.00      0.24     0.00        3     0.00     0.00  std::allocator_traits<std::allocator<Animal*> >::deallocate(std::allocator<Animal*>&, Animal**, unsigned long)
+  0.00      0.24     0.00        3     0.00     0.00  std::allocator_traits<std::allocator<Animal*> >::allocate(std::allocator<Animal*>&, unsigned long)
+  0.00      0.24     0.00        3     0.00     0.00  void std::allocator_traits<std::allocator<Animal*> >::construct<Animal*, Animal* const&>(std::allocator<Animal*>&, Animal**, Animal* const&)
+  0.00      0.24     0.00        3     0.00     0.00  void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&)
+  0.00      0.24     0.00        3     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::push_back(Animal* const&)
+  0.00      0.24     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4Wolf4NameB5cxx11Ev
+  0.00      0.24     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN5Mouse4NameB5cxx11Ev
+  0.00      0.24     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN5Tiger4NameB5cxx11Ev
+  0.00      0.24     0.00        1     0.00     0.00  _GLOBAL__sub_I_zoo
+  0.00      0.24     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.24     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.24     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.24     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.24     0.00        1     0.00     0.00  init()
+  0.00      0.24     0.00        1     0.00     0.00  Wolf::Wolf()
+  0.00      0.24     0.00        1     0.00     0.00  Mouse::Mouse()
+  0.00      0.24     0.00        1     0.00     0.00  Tiger::Tiger()
+  0.00      0.24     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<BigMem>::new_allocator()
+  0.00      0.24     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<Animal*>::new_allocator()
+  0.00      0.24     0.00        1     0.00     0.00  __gnu_cxx::new_allocator<Animal*>::~new_allocator()
+  0.00      0.24     0.00        1     0.00     0.00  std::allocator<BigMem>::allocator()
+  0.00      0.24     0.00        1     0.00     0.00  std::allocator<Animal*>::allocator()
+  0.00      0.24     0.00        1     0.00     0.00  std::allocator<Animal*>::~allocator()
+  0.00      0.24     0.00        1     0.00     0.00  void std::_Destroy_aux<true>::__destroy<Animal**>(Animal**, Animal**)
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl::_Vector_impl()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl_data::_Vector_impl_data()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_base()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::_Vector_impl()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::~_Vector_impl()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl_data::_Vector_impl_data()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_base()
+  0.00      0.24     0.00        1     0.00     0.00  std::_Vector_base<Animal*, std::allocator<Animal*> >::~_Vector_base()
+  0.00      0.24     0.00        1     0.00     0.00  std::vector<BigMem, std::allocator<BigMem> >::vector()
+  0.00      0.24     0.00        1     0.00     0.00  std::vector<Animal*, std::allocator<Animal*> >::vector()
+  0.00      0.24     0.00        1     0.00     0.00  void std::_Destroy<Animal**>(Animal**, Animal**)
+  0.00      0.24     0.00        1     0.00     0.00  void std::_Destroy<Animal**, Animal*>(Animal**, Animal**, std::allocator<Animal*>&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 4.16% of 0.24 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.24                 main [1]
+                0.00    0.24     300/300         Animal::Live() [2]
+                0.00    0.00     400/400         bool __gnu_cxx::operator!=<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [20]
+                0.00    0.00     300/300         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator*() const [25]
+                0.00    0.00     300/300         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator++() [24]
+                0.00    0.00     100/103         std::vector<Animal*, std::allocator<Animal*> >::begin() [30]
+                0.00    0.00     100/103         std::vector<Animal*, std::allocator<Animal*> >::end() [29]
+                0.00    0.00       1/1           init() [100]
+-----------------------------------------------
+                0.00    0.24     300/300         main [1]
+[2]    100.0    0.00    0.24     300         Animal::Live() [2]
+                0.13    0.00     100/100         Tiger::Eat() [3]
+                0.02    0.09     100/100         Wolf::Climb() [4]
+                0.00    0.00     100/100         Wolf::Eat() [31]
+                0.00    0.00     100/100         Mouse::Eat() [33]
+                0.00    0.00     100/100         Wolf::Drink() [32]
+                0.00    0.00     100/100         Tiger::Drink() [37]
+                0.00    0.00     100/100         Mouse::Drink() [35]
+                0.00    0.00     100/100         Tiger::Climb() [36]
+                0.00    0.00     100/100         Mouse::Climb() [34]
+-----------------------------------------------
+                0.13    0.00     100/100         Animal::Live() [2]
+[3]     54.2    0.13    0.00     100         Tiger::Eat() [3]
+                0.00    0.00     100/300         Tiger::Name[abi:cxx11]() [23]
+-----------------------------------------------
+                0.02    0.09     100/100         Animal::Live() [2]
+[4]     45.8    0.02    0.09     100         Wolf::Climb() [4]
+                0.00    0.09 1048576/1048576     std::vector<BigMem, std::allocator<BigMem> >::push_back(BigMem&&) [7]
+                0.00    0.00     100/300         Wolf::Name[abi:cxx11]() [21]
+                0.00    0.00     100/184         std::vector<BigMem, std::allocator<BigMem> >::size() const [27]
+-----------------------------------------------
+                0.00    0.00      21/1048576     void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+                0.01    0.08 1048555/1048576     void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&) [6]
+[5]     37.5    0.01    0.08 1048576         void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&) [5]
+                0.08    0.00 1048576/1048576     void __gnu_cxx::new_allocator<BigMem>::construct<BigMem, BigMem>(BigMem*, BigMem&&) [8]
+                0.00    0.00 1048576/3145749     BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&) [16]
+-----------------------------------------------
+                0.00    0.09 1048576/1048576     std::vector<BigMem, std::allocator<BigMem> >::push_back(BigMem&&) [7]
+[6]     37.5    0.00    0.09 1048576         void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&) [6]
+                0.01    0.08 1048555/1048576     void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&) [5]
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+                0.00    0.00 1048576/3145749     BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&) [16]
+                0.00    0.00      21/21          std::vector<BigMem, std::allocator<BigMem> >::end() [60]
+-----------------------------------------------
+                0.00    0.09 1048576/1048576     Wolf::Climb() [4]
+[7]     37.5    0.00    0.09 1048576         std::vector<BigMem, std::allocator<BigMem> >::push_back(BigMem&&) [7]
+                0.00    0.09 1048576/1048576     void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&) [6]
+                0.00    0.00 1048576/1048576     std::remove_reference<BigMem&>::type&& std::move<BigMem&>(BigMem&) [18]
+-----------------------------------------------
+                0.08    0.00 1048576/1048576     void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&) [5]
+[8]     33.3    0.08    0.00 1048576         void __gnu_cxx::new_allocator<BigMem>::construct<BigMem, BigMem>(BigMem*, BigMem&&) [8]
+                0.00    0.00 1048576/3145749     BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&) [16]
+                0.00    0.00 1048576/1048579     operator new(unsigned long, void*) [17]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&) [6]
+[9]      0.0    0.00    0.00      21         void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+                0.00    0.00      21/1048576     void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&) [5]
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_use_relocate() [49]
+                0.00    0.00      42/42          std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() [44]
+                0.00    0.00      42/84          __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::base() const [38]
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [47]
+                0.00    0.00      21/21          std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const [56]
+                0.00    0.00      21/21          std::vector<BigMem, std::allocator<BigMem> >::begin() [61]
+                0.00    0.00      21/21          __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::difference_type __gnu_cxx::operator-<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&, __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&) [55]
+                0.00    0.00      21/21          std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_allocate(unsigned long) [57]
+                0.00    0.00      21/3145749     BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&) [16]
+                0.00    0.00      21/21          std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_deallocate(BigMem*, unsigned long) [58]
+-----------------------------------------------
+                0.00    0.00      21/3145749     void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+                0.00    0.00 1048576/3145749     void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&) [6]
+                0.00    0.00 1048576/3145749     void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&) [5]
+                0.00    0.00 1048576/3145749     void __gnu_cxx::new_allocator<BigMem>::construct<BigMem, BigMem>(BigMem*, BigMem&&) [8]
+[16]     0.0    0.00    0.00 3145749         BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&) [16]
+-----------------------------------------------
+                0.00    0.00       3/1048579     void __gnu_cxx::new_allocator<Animal*>::construct<Animal*, Animal* const&>(Animal**, Animal* const&) [83]
+                0.00    0.00 1048576/1048579     void __gnu_cxx::new_allocator<BigMem>::construct<BigMem, BigMem>(BigMem*, BigMem&&) [8]
+[17]     0.0    0.00    0.00 1048579         operator new(unsigned long, void*) [17]
+-----------------------------------------------
+                0.00    0.00 1048576/1048576     std::vector<BigMem, std::allocator<BigMem> >::push_back(BigMem&&) [7]
+[18]     0.0    0.00    0.00 1048576         std::remove_reference<BigMem&>::type&& std::move<BigMem&>(BigMem&) [18]
+-----------------------------------------------
+                0.00    0.00       6/812         void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+                0.00    0.00       6/812         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::difference_type __gnu_cxx::operator-<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [84]
+                0.00    0.00     800/812         bool __gnu_cxx::operator!=<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [20]
+[19]     0.0    0.00    0.00     812         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::base() const [19]
+-----------------------------------------------
+                0.00    0.00     400/400         main [1]
+[20]     0.0    0.00    0.00     400         bool __gnu_cxx::operator!=<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [20]
+                0.00    0.00     800/812         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::base() const [19]
+-----------------------------------------------
+                0.00    0.00     100/300         Wolf::Eat() [31]
+                0.00    0.00     100/300         Wolf::Climb() [4]
+                0.00    0.00     100/300         Wolf::Drink() [32]
+[21]     0.0    0.00    0.00     300         Wolf::Name[abi:cxx11]() [21]
+-----------------------------------------------
+                0.00    0.00     100/300         Mouse::Eat() [33]
+                0.00    0.00     100/300         Mouse::Climb() [34]
+                0.00    0.00     100/300         Mouse::Drink() [35]
+[22]     0.0    0.00    0.00     300         Mouse::Name[abi:cxx11]() [22]
+-----------------------------------------------
+                0.00    0.00     100/300         Tiger::Eat() [3]
+                0.00    0.00     100/300         Tiger::Climb() [36]
+                0.00    0.00     100/300         Tiger::Drink() [37]
+[23]     0.0    0.00    0.00     300         Tiger::Name[abi:cxx11]() [23]
+-----------------------------------------------
+                0.00    0.00     300/300         main [1]
+[24]     0.0    0.00    0.00     300         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator++() [24]
+-----------------------------------------------
+                0.00    0.00     300/300         main [1]
+[25]     0.0    0.00    0.00     300         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator*() const [25]
+-----------------------------------------------
+                0.00    0.00     103/206         std::vector<Animal*, std::allocator<Animal*> >::begin() [30]
+                0.00    0.00     103/206         std::vector<Animal*, std::allocator<Animal*> >::end() [29]
+[26]     0.0    0.00    0.00     206         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::__normal_iterator(Animal** const&) [26]
+-----------------------------------------------
+                0.00    0.00      84/184         std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const [56]
+                0.00    0.00     100/184         Wolf::Climb() [4]
+[27]     0.0    0.00    0.00     184         std::vector<BigMem, std::allocator<BigMem> >::size() const [27]
+-----------------------------------------------
+                0.00    0.00     126/126         BigMem* std::__relocate_a<BigMem*, BigMem*, std::allocator<BigMem> >(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [51]
+[28]     0.0    0.00    0.00     126         BigMem* std::__niter_base<BigMem*>(BigMem*) [28]
+-----------------------------------------------
+                0.00    0.00       3/103         std::vector<Animal*, std::allocator<Animal*> >::push_back(Animal* const&) [91]
+                0.00    0.00     100/103         main [1]
+[29]     0.0    0.00    0.00     103         std::vector<Animal*, std::allocator<Animal*> >::end() [29]
+                0.00    0.00     103/206         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::__normal_iterator(Animal** const&) [26]
+-----------------------------------------------
+                0.00    0.00       3/103         void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+                0.00    0.00     100/103         main [1]
+[30]     0.0    0.00    0.00     103         std::vector<Animal*, std::allocator<Animal*> >::begin() [30]
+                0.00    0.00     103/206         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::__normal_iterator(Animal** const&) [26]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[31]     0.0    0.00    0.00     100         Wolf::Eat() [31]
+                0.00    0.00     100/300         Wolf::Name[abi:cxx11]() [21]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[32]     0.0    0.00    0.00     100         Wolf::Drink() [32]
+                0.00    0.00     100/300         Wolf::Name[abi:cxx11]() [21]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[33]     0.0    0.00    0.00     100         Mouse::Eat() [33]
+                0.00    0.00     100/300         Mouse::Name[abi:cxx11]() [22]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[34]     0.0    0.00    0.00     100         Mouse::Climb() [34]
+                0.00    0.00     100/300         Mouse::Name[abi:cxx11]() [22]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[35]     0.0    0.00    0.00     100         Mouse::Drink() [35]
+                0.00    0.00     100/300         Mouse::Name[abi:cxx11]() [22]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[36]     0.0    0.00    0.00     100         Tiger::Climb() [36]
+                0.00    0.00     100/300         Tiger::Name[abi:cxx11]() [23]
+-----------------------------------------------
+                0.00    0.00     100/100         Animal::Live() [2]
+[37]     0.0    0.00    0.00     100         Tiger::Drink() [37]
+                0.00    0.00     100/300         Tiger::Name[abi:cxx11]() [23]
+-----------------------------------------------
+                0.00    0.00      42/84          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+                0.00    0.00      42/84          __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::difference_type __gnu_cxx::operator-<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&, __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&) [55]
+[38]     0.0    0.00    0.00      84         __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::base() const [38]
+-----------------------------------------------
+                0.00    0.00      21/63          __gnu_cxx::new_allocator<BigMem>::allocate(unsigned long, void const*) [54]
+                0.00    0.00      42/63          std::allocator_traits<std::allocator<BigMem> >::max_size(std::allocator<BigMem> const&) [45]
+[39]     0.0    0.00    0.00      63         __gnu_cxx::new_allocator<BigMem>::max_size() const [39]
+-----------------------------------------------
+                0.00    0.00       6/48          std::vector<Animal*, std::allocator<Animal*> >::_S_max_size(std::allocator<Animal*> const&) [72]
+                0.00    0.00      42/48          std::vector<BigMem, std::allocator<BigMem> >::_S_max_size(std::allocator<BigMem> const&) [46]
+[40]     0.0    0.00    0.00      48         unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&) [40]
+-----------------------------------------------
+                0.00    0.00      21/42          std::vector<BigMem, std::allocator<BigMem> >::end() [60]
+                0.00    0.00      21/42          std::vector<BigMem, std::allocator<BigMem> >::begin() [61]
+[41]     0.0    0.00    0.00      42         __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::__normal_iterator(BigMem* const&) [41]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::max_size() const [43]
+[42]     0.0    0.00    0.00      42         std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() const [42]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const [56]
+[43]     0.0    0.00    0.00      42         std::vector<BigMem, std::allocator<BigMem> >::max_size() const [43]
+                0.00    0.00      42/42          std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() const [42]
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_max_size(std::allocator<BigMem> const&) [46]
+-----------------------------------------------
+                0.00    0.00      42/42          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[44]     0.0    0.00    0.00      42         std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() [44]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_max_size(std::allocator<BigMem> const&) [46]
+[45]     0.0    0.00    0.00      42         std::allocator_traits<std::allocator<BigMem> >::max_size(std::allocator<BigMem> const&) [45]
+                0.00    0.00      42/63          __gnu_cxx::new_allocator<BigMem>::max_size() const [39]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::max_size() const [43]
+[46]     0.0    0.00    0.00      42         std::vector<BigMem, std::allocator<BigMem> >::_S_max_size(std::allocator<BigMem> const&) [46]
+                0.00    0.00      42/42          std::allocator_traits<std::allocator<BigMem> >::max_size(std::allocator<BigMem> const&) [45]
+                0.00    0.00      42/48          unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&) [40]
+-----------------------------------------------
+                0.00    0.00      42/42          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[47]     0.0    0.00    0.00      42         std::vector<BigMem, std::allocator<BigMem> >::_S_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [47]
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_do_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&, std::integral_constant<bool, true>) [48]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [47]
+[48]     0.0    0.00    0.00      42         std::vector<BigMem, std::allocator<BigMem> >::_S_do_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&, std::integral_constant<bool, true>) [48]
+                0.00    0.00      42/42          BigMem* std::__relocate_a<BigMem*, BigMem*, std::allocator<BigMem> >(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [51]
+-----------------------------------------------
+                0.00    0.00      42/42          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[49]     0.0    0.00    0.00      42         std::vector<BigMem, std::allocator<BigMem> >::_S_use_relocate() [49]
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_nothrow_relocate(std::integral_constant<bool, true>) [50]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_use_relocate() [49]
+[50]     0.0    0.00    0.00      42         std::vector<BigMem, std::allocator<BigMem> >::_S_nothrow_relocate(std::integral_constant<bool, true>) [50]
+-----------------------------------------------
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::_S_do_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&, std::integral_constant<bool, true>) [48]
+[51]     0.0    0.00    0.00      42         BigMem* std::__relocate_a<BigMem*, BigMem*, std::allocator<BigMem> >(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [51]
+                0.00    0.00     126/126         BigMem* std::__niter_base<BigMem*>(BigMem*) [28]
+                0.00    0.00      42/42          std::enable_if<std::__is_bitwise_relocatable<BigMem, void>::value, BigMem*>::type std::__relocate_a_1<BigMem, BigMem>(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [52]
+-----------------------------------------------
+                0.00    0.00      42/42          BigMem* std::__relocate_a<BigMem*, BigMem*, std::allocator<BigMem> >(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [51]
+[52]     0.0    0.00    0.00      42         std::enable_if<std::__is_bitwise_relocatable<BigMem, void>::value, BigMem*>::type std::__relocate_a_1<BigMem, BigMem>(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&) [52]
+-----------------------------------------------
+                0.00    0.00       3/24          std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const [85]
+                0.00    0.00      21/24          std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const [56]
+[53]     0.0    0.00    0.00      24         unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [53]
+-----------------------------------------------
+                0.00    0.00      21/21          std::allocator_traits<std::allocator<BigMem> >::allocate(std::allocator<BigMem>&, unsigned long) [59]
+[54]     0.0    0.00    0.00      21         __gnu_cxx::new_allocator<BigMem>::allocate(unsigned long, void const*) [54]
+                0.00    0.00      21/63          __gnu_cxx::new_allocator<BigMem>::max_size() const [39]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[55]     0.0    0.00    0.00      21         __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::difference_type __gnu_cxx::operator-<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&, __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&) [55]
+                0.00    0.00      42/84          __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::base() const [38]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[56]     0.0    0.00    0.00      21         std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const [56]
+                0.00    0.00      84/184         std::vector<BigMem, std::allocator<BigMem> >::size() const [27]
+                0.00    0.00      42/42          std::vector<BigMem, std::allocator<BigMem> >::max_size() const [43]
+                0.00    0.00      21/24          unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [53]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[57]     0.0    0.00    0.00      21         std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_allocate(unsigned long) [57]
+                0.00    0.00      21/21          std::allocator_traits<std::allocator<BigMem> >::allocate(std::allocator<BigMem>&, unsigned long) [59]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[58]     0.0    0.00    0.00      21         std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_deallocate(BigMem*, unsigned long) [58]
+                0.00    0.00      20/20          std::allocator_traits<std::allocator<BigMem> >::deallocate(std::allocator<BigMem>&, BigMem*, unsigned long) [63]
+-----------------------------------------------
+                0.00    0.00      21/21          std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_allocate(unsigned long) [57]
+[59]     0.0    0.00    0.00      21         std::allocator_traits<std::allocator<BigMem> >::allocate(std::allocator<BigMem>&, unsigned long) [59]
+                0.00    0.00      21/21          __gnu_cxx::new_allocator<BigMem>::allocate(unsigned long, void const*) [54]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&) [6]
+[60]     0.0    0.00    0.00      21         std::vector<BigMem, std::allocator<BigMem> >::end() [60]
+                0.00    0.00      21/42          __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::__normal_iterator(BigMem* const&) [41]
+-----------------------------------------------
+                0.00    0.00      21/21          void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&) [9]
+[61]     0.0    0.00    0.00      21         std::vector<BigMem, std::allocator<BigMem> >::begin() [61]
+                0.00    0.00      21/42          __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::__normal_iterator(BigMem* const&) [41]
+-----------------------------------------------
+                0.00    0.00      20/20          std::allocator_traits<std::allocator<BigMem> >::deallocate(std::allocator<BigMem>&, BigMem*, unsigned long) [63]
+[62]     0.0    0.00    0.00      20         __gnu_cxx::new_allocator<BigMem>::deallocate(BigMem*, unsigned long) [62]
+-----------------------------------------------
+                0.00    0.00      20/20          std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_deallocate(BigMem*, unsigned long) [58]
+[63]     0.0    0.00    0.00      20         std::allocator_traits<std::allocator<BigMem> >::deallocate(std::allocator<BigMem>&, BigMem*, unsigned long) [63]
+                0.00    0.00      20/20          __gnu_cxx::new_allocator<BigMem>::deallocate(BigMem*, unsigned long) [62]
+-----------------------------------------------
+                0.00    0.00      18/18          Animal** std::__relocate_a<Animal**, Animal**, std::allocator<Animal*> >(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [77]
+[64]     0.0    0.00    0.00      18         Animal** std::__niter_base<Animal**>(Animal**) [64]
+-----------------------------------------------
+                0.00    0.00      12/12          std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const [85]
+[65]     0.0    0.00    0.00      12         std::vector<Animal*, std::allocator<Animal*> >::size() const [65]
+-----------------------------------------------
+                0.00    0.00       3/9           __gnu_cxx::new_allocator<Animal*>::allocate(unsigned long, void const*) [82]
+                0.00    0.00       6/9           std::allocator_traits<std::allocator<Animal*> >::max_size(std::allocator<Animal*> const&) [71]
+[66]     0.0    0.00    0.00       9         __gnu_cxx::new_allocator<Animal*>::max_size() const [66]
+-----------------------------------------------
+                0.00    0.00       3/9           void std::allocator_traits<std::allocator<Animal*> >::construct<Animal*, Animal* const&>(std::allocator<Animal*>&, Animal**, Animal* const&) [89]
+                0.00    0.00       3/9           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+                0.00    0.00       3/9           void __gnu_cxx::new_allocator<Animal*>::construct<Animal*, Animal* const&>(Animal**, Animal* const&) [83]
+[67]     0.0    0.00    0.00       9         Animal* const& std::forward<Animal* const&>(std::remove_reference<Animal* const&>::type&) [67]
+-----------------------------------------------
+                0.00    0.00       1/7           std::vector<Animal*, std::allocator<Animal*> >::~vector() [140]
+                0.00    0.00       6/7           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[68]     0.0    0.00    0.00       7         std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() [68]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::max_size() const [70]
+[69]     0.0    0.00    0.00       6         std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() const [69]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const [85]
+[70]     0.0    0.00    0.00       6         std::vector<Animal*, std::allocator<Animal*> >::max_size() const [70]
+                0.00    0.00       6/6           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() const [69]
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_max_size(std::allocator<Animal*> const&) [72]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_max_size(std::allocator<Animal*> const&) [72]
+[71]     0.0    0.00    0.00       6         std::allocator_traits<std::allocator<Animal*> >::max_size(std::allocator<Animal*> const&) [71]
+                0.00    0.00       6/9           __gnu_cxx::new_allocator<Animal*>::max_size() const [66]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::max_size() const [70]
+[72]     0.0    0.00    0.00       6         std::vector<Animal*, std::allocator<Animal*> >::_S_max_size(std::allocator<Animal*> const&) [72]
+                0.00    0.00       6/6           std::allocator_traits<std::allocator<Animal*> >::max_size(std::allocator<Animal*> const&) [71]
+                0.00    0.00       6/48          unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&) [40]
+-----------------------------------------------
+                0.00    0.00       6/6           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[73]     0.0    0.00    0.00       6         std::vector<Animal*, std::allocator<Animal*> >::_S_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [73]
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_do_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&, std::integral_constant<bool, true>) [74]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [73]
+[74]     0.0    0.00    0.00       6         std::vector<Animal*, std::allocator<Animal*> >::_S_do_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&, std::integral_constant<bool, true>) [74]
+                0.00    0.00       6/6           Animal** std::__relocate_a<Animal**, Animal**, std::allocator<Animal*> >(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [77]
+-----------------------------------------------
+                0.00    0.00       6/6           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[75]     0.0    0.00    0.00       6         std::vector<Animal*, std::allocator<Animal*> >::_S_use_relocate() [75]
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_nothrow_relocate(std::integral_constant<bool, true>) [76]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_use_relocate() [75]
+[76]     0.0    0.00    0.00       6         std::vector<Animal*, std::allocator<Animal*> >::_S_nothrow_relocate(std::integral_constant<bool, true>) [76]
+-----------------------------------------------
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_do_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&, std::integral_constant<bool, true>) [74]
+[77]     0.0    0.00    0.00       6         Animal** std::__relocate_a<Animal**, Animal**, std::allocator<Animal*> >(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [77]
+                0.00    0.00      18/18          Animal** std::__niter_base<Animal**>(Animal**) [64]
+                0.00    0.00       6/6           std::enable_if<std::__is_bitwise_relocatable<Animal*, void>::value, Animal**>::type std::__relocate_a_1<Animal*, Animal*>(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [78]
+-----------------------------------------------
+                0.00    0.00       6/6           Animal** std::__relocate_a<Animal**, Animal**, std::allocator<Animal*> >(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [77]
+[78]     0.0    0.00    0.00       6         std::enable_if<std::__is_bitwise_relocatable<Animal*, void>::value, Animal**>::type std::__relocate_a_1<Animal*, Animal*>(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [78]
+-----------------------------------------------
+                0.00    0.00       1/4           std::_Vector_base<Animal*, std::allocator<Animal*> >::~_Vector_base() [118]
+                0.00    0.00       3/4           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[79]     0.0    0.00    0.00       4         std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_deallocate(Animal**, unsigned long) [79]
+                0.00    0.00       3/3           std::allocator_traits<std::allocator<Animal*> >::deallocate(std::allocator<Animal*>&, Animal**, unsigned long) [87]
+-----------------------------------------------
+                0.00    0.00       1/3           Mouse::Mouse() [102]
+                0.00    0.00       1/3           Tiger::Tiger() [103]
+                0.00    0.00       1/3           Wolf::Wolf() [101]
+[80]     0.0    0.00    0.00       3         Animal::Animal() [80]
+-----------------------------------------------
+                0.00    0.00       3/3           std::allocator_traits<std::allocator<Animal*> >::deallocate(std::allocator<Animal*>&, Animal**, unsigned long) [87]
+[81]     0.0    0.00    0.00       3         __gnu_cxx::new_allocator<Animal*>::deallocate(Animal**, unsigned long) [81]
+-----------------------------------------------
+                0.00    0.00       3/3           std::allocator_traits<std::allocator<Animal*> >::allocate(std::allocator<Animal*>&, unsigned long) [88]
+[82]     0.0    0.00    0.00       3         __gnu_cxx::new_allocator<Animal*>::allocate(unsigned long, void const*) [82]
+                0.00    0.00       3/9           __gnu_cxx::new_allocator<Animal*>::max_size() const [66]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::allocator_traits<std::allocator<Animal*> >::construct<Animal*, Animal* const&>(std::allocator<Animal*>&, Animal**, Animal* const&) [89]
+[83]     0.0    0.00    0.00       3         void __gnu_cxx::new_allocator<Animal*>::construct<Animal*, Animal* const&>(Animal**, Animal* const&) [83]
+                0.00    0.00       3/9           Animal* const& std::forward<Animal* const&>(std::remove_reference<Animal* const&>::type&) [67]
+                0.00    0.00       3/1048579     operator new(unsigned long, void*) [17]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[84]     0.0    0.00    0.00       3         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::difference_type __gnu_cxx::operator-<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [84]
+                0.00    0.00       6/812         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::base() const [19]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[85]     0.0    0.00    0.00       3         std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const [85]
+                0.00    0.00      12/12          std::vector<Animal*, std::allocator<Animal*> >::size() const [65]
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::max_size() const [70]
+                0.00    0.00       3/24          unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&) [53]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[86]     0.0    0.00    0.00       3         std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_allocate(unsigned long) [86]
+                0.00    0.00       3/3           std::allocator_traits<std::allocator<Animal*> >::allocate(std::allocator<Animal*>&, unsigned long) [88]
+-----------------------------------------------
+                0.00    0.00       3/3           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_deallocate(Animal**, unsigned long) [79]
+[87]     0.0    0.00    0.00       3         std::allocator_traits<std::allocator<Animal*> >::deallocate(std::allocator<Animal*>&, Animal**, unsigned long) [87]
+                0.00    0.00       3/3           __gnu_cxx::new_allocator<Animal*>::deallocate(Animal**, unsigned long) [81]
+-----------------------------------------------
+                0.00    0.00       3/3           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_allocate(unsigned long) [86]
+[88]     0.0    0.00    0.00       3         std::allocator_traits<std::allocator<Animal*> >::allocate(std::allocator<Animal*>&, unsigned long) [88]
+                0.00    0.00       3/3           __gnu_cxx::new_allocator<Animal*>::allocate(unsigned long, void const*) [82]
+-----------------------------------------------
+                0.00    0.00       3/3           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+[89]     0.0    0.00    0.00       3         void std::allocator_traits<std::allocator<Animal*> >::construct<Animal*, Animal* const&>(std::allocator<Animal*>&, Animal**, Animal* const&) [89]
+                0.00    0.00       3/9           Animal* const& std::forward<Animal* const&>(std::remove_reference<Animal* const&>::type&) [67]
+                0.00    0.00       3/3           void __gnu_cxx::new_allocator<Animal*>::construct<Animal*, Animal* const&>(Animal**, Animal* const&) [83]
+-----------------------------------------------
+                0.00    0.00       3/3           std::vector<Animal*, std::allocator<Animal*> >::push_back(Animal* const&) [91]
+[90]     0.0    0.00    0.00       3         void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_use_relocate() [75]
+                0.00    0.00       6/7           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() [68]
+                0.00    0.00       6/812         __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::base() const [19]
+                0.00    0.00       6/6           std::vector<Animal*, std::allocator<Animal*> >::_S_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&) [73]
+                0.00    0.00       3/3           std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const [85]
+                0.00    0.00       3/103         std::vector<Animal*, std::allocator<Animal*> >::begin() [30]
+                0.00    0.00       3/3           __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::difference_type __gnu_cxx::operator-<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [84]
+                0.00    0.00       3/3           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_allocate(unsigned long) [86]
+                0.00    0.00       3/9           Animal* const& std::forward<Animal* const&>(std::remove_reference<Animal* const&>::type&) [67]
+                0.00    0.00       3/3           void std::allocator_traits<std::allocator<Animal*> >::construct<Animal*, Animal* const&>(std::allocator<Animal*>&, Animal**, Animal* const&) [89]
+                0.00    0.00       3/4           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_deallocate(Animal**, unsigned long) [79]
+-----------------------------------------------
+                0.00    0.00       3/3           init() [100]
+[91]     0.0    0.00    0.00       3         std::vector<Animal*, std::allocator<Animal*> >::push_back(Animal* const&) [91]
+                0.00    0.00       3/103         std::vector<Animal*, std::allocator<Animal*> >::end() [29]
+                0.00    0.00       3/3           void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&) [90]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [166]
+[92]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4Wolf4NameB5cxx11Ev [92]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [96]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [166]
+[93]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN5Mouse4NameB5cxx11Ev [93]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [98]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [166]
+[94]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN5Tiger4NameB5cxx11Ev [94]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [166]
+[95]     0.0    0.00    0.00       1         _GLOBAL__sub_I_zoo [95]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [99]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN4Wolf4NameB5cxx11Ev [92]
+[96]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [96]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN5Tiger4NameB5cxx11Ev [94]
+[97]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [97]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN5Mouse4NameB5cxx11Ev [93]
+[98]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [98]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I_zoo [95]
+[99]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [99]
+                0.00    0.00       1/1           std::vector<Animal*, std::allocator<Animal*> >::vector() [120]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[100]    0.0    0.00    0.00       1         init() [100]
+                0.00    0.00       3/3           std::vector<Animal*, std::allocator<Animal*> >::push_back(Animal* const&) [91]
+                0.00    0.00       1/1           Mouse::Mouse() [102]
+                0.00    0.00       1/1           Tiger::Tiger() [103]
+                0.00    0.00       1/1           Wolf::Wolf() [101]
+-----------------------------------------------
+                0.00    0.00       1/1           init() [100]
+[101]    0.0    0.00    0.00       1         Wolf::Wolf() [101]
+                0.00    0.00       1/3           Animal::Animal() [80]
+                0.00    0.00       1/1           std::vector<BigMem, std::allocator<BigMem> >::vector() [119]
+-----------------------------------------------
+                0.00    0.00       1/1           init() [100]
+[102]    0.0    0.00    0.00       1         Mouse::Mouse() [102]
+                0.00    0.00       1/3           Animal::Animal() [80]
+-----------------------------------------------
+                0.00    0.00       1/1           init() [100]
+[103]    0.0    0.00    0.00       1         Tiger::Tiger() [103]
+                0.00    0.00       1/3           Animal::Animal() [80]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<BigMem>::allocator() [107]
+[104]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<BigMem>::new_allocator() [104]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<Animal*>::allocator() [108]
+[105]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<Animal*>::new_allocator() [105]
+-----------------------------------------------
+                0.00    0.00       1/1           std::allocator<Animal*>::~allocator() [109]
+[106]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<Animal*>::~new_allocator() [106]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl::_Vector_impl() [111]
+[107]    0.0    0.00    0.00       1         std::allocator<BigMem>::allocator() [107]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<BigMem>::new_allocator() [104]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::_Vector_impl() [114]
+[108]    0.0    0.00    0.00       1         std::allocator<Animal*>::allocator() [108]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<Animal*>::new_allocator() [105]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::~_Vector_impl() [115]
+[109]    0.0    0.00    0.00       1         std::allocator<Animal*>::~allocator() [109]
+                0.00    0.00       1/1           __gnu_cxx::new_allocator<Animal*>::~new_allocator() [106]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::_Destroy<Animal**>(Animal**, Animal**) [121]
+[110]    0.0    0.00    0.00       1         void std::_Destroy_aux<true>::__destroy<Animal**>(Animal**, Animal**) [110]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_base() [113]
+[111]    0.0    0.00    0.00       1         std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl::_Vector_impl() [111]
+                0.00    0.00       1/1           std::allocator<BigMem>::allocator() [107]
+                0.00    0.00       1/1           std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl_data::_Vector_impl_data() [112]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl::_Vector_impl() [111]
+[112]    0.0    0.00    0.00       1         std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl_data::_Vector_impl_data() [112]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<BigMem, std::allocator<BigMem> >::vector() [119]
+[113]    0.0    0.00    0.00       1         std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_base() [113]
+                0.00    0.00       1/1           std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl::_Vector_impl() [111]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_base() [117]
+[114]    0.0    0.00    0.00       1         std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::_Vector_impl() [114]
+                0.00    0.00       1/1           std::allocator<Animal*>::allocator() [108]
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl_data::_Vector_impl_data() [116]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::~_Vector_base() [118]
+[115]    0.0    0.00    0.00       1         std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::~_Vector_impl() [115]
+                0.00    0.00       1/1           std::allocator<Animal*>::~allocator() [109]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::_Vector_impl() [114]
+[116]    0.0    0.00    0.00       1         std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl_data::_Vector_impl_data() [116]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<Animal*, std::allocator<Animal*> >::vector() [120]
+[117]    0.0    0.00    0.00       1         std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_base() [117]
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::_Vector_impl() [114]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<Animal*, std::allocator<Animal*> >::~vector() [140]
+[118]    0.0    0.00    0.00       1         std::_Vector_base<Animal*, std::allocator<Animal*> >::~_Vector_base() [118]
+                0.00    0.00       1/4           std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_deallocate(Animal**, unsigned long) [79]
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::~_Vector_impl() [115]
+-----------------------------------------------
+                0.00    0.00       1/1           Wolf::Wolf() [101]
+[119]    0.0    0.00    0.00       1         std::vector<BigMem, std::allocator<BigMem> >::vector() [119]
+                0.00    0.00       1/1           std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_base() [113]
+-----------------------------------------------
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [99]
+[120]    0.0    0.00    0.00       1         std::vector<Animal*, std::allocator<Animal*> >::vector() [120]
+                0.00    0.00       1/1           std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_base() [117]
+-----------------------------------------------
+                0.00    0.00       1/1           void std::_Destroy<Animal**, Animal*>(Animal**, Animal**, std::allocator<Animal*>&) [122]
+[121]    0.0    0.00    0.00       1         void std::_Destroy<Animal**>(Animal**, Animal**) [121]
+                0.00    0.00       1/1           void std::_Destroy_aux<true>::__destroy<Animal**>(Animal**, Animal**) [110]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<Animal*, std::allocator<Animal*> >::~vector() [140]
+[122]    0.0    0.00    0.00       1         void std::_Destroy<Animal**, Animal*>(Animal**, Animal**, std::allocator<Animal*>&) [122]
+                0.00    0.00       1/1           void std::_Destroy<Animal**>(Animal**, Animal**) [121]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [92] _GLOBAL__sub_I__ZN4Wolf4NameB5cxx11Ev (wolf.cpp) [84] __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::difference_type __gnu_cxx::operator-<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [71] std::allocator_traits<std::allocator<Animal*> >::max_size(std::allocator<Animal*> const&)
+  [93] _GLOBAL__sub_I__ZN5Mouse4NameB5cxx11Ev (mouse.cpp) [20] bool __gnu_cxx::operator!=<Animal**, std::vector<Animal*, std::allocator<Animal*> > >(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&, __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > > const&) [89] void std::allocator_traits<std::allocator<Animal*> >::construct<Animal*, Animal* const&>(std::allocator<Animal*>&, Animal**, Animal* const&)
+  [94] _GLOBAL__sub_I__ZN5Tiger4NameB5cxx11Ev (tiger.cpp) [39] __gnu_cxx::new_allocator<BigMem>::max_size() const [46] std::vector<BigMem, std::allocator<BigMem> >::_S_max_size(std::allocator<BigMem> const&)
+  [95] _GLOBAL__sub_I_zoo (main.cpp) [66] __gnu_cxx::new_allocator<Animal*>::max_size() const [47] std::vector<BigMem, std::allocator<BigMem> >::_S_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&)
+  [96] __static_initialization_and_destruction_0(int, int) (wolf.cpp) [38] __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::base() const [6] void std::vector<BigMem, std::allocator<BigMem> >::emplace_back<BigMem>(BigMem&&)
+  [97] __static_initialization_and_destruction_0(int, int) (tiger.cpp) [19] __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::base() const [48] std::vector<BigMem, std::allocator<BigMem> >::_S_do_relocate(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&, std::integral_constant<bool, true>)
+  [98] __static_initialization_and_destruction_0(int, int) (mouse.cpp) [25] __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator*() const [49] std::vector<BigMem, std::allocator<BigMem> >::_S_use_relocate()
+  [99] __static_initialization_and_destruction_0(int, int) (main.cpp) [42] std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() const [9] void std::vector<BigMem, std::allocator<BigMem> >::_M_realloc_insert<BigMem>(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >, BigMem&&)
+ [100] init()                 [69] std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() const [50] std::vector<BigMem, std::allocator<BigMem> >::_S_nothrow_relocate(std::integral_constant<bool, true>)
+  [31] Wolf::Eat()            [56] std::vector<BigMem, std::allocator<BigMem> >::_M_check_len(unsigned long, char const*) const [60] std::vector<BigMem, std::allocator<BigMem> >::end()
+  [21] Wolf::Name[abi:cxx11]() [27] std::vector<BigMem, std::allocator<BigMem> >::size() const [61] std::vector<BigMem, std::allocator<BigMem> >::begin()
+   [4] Wolf::Climb()          [43] std::vector<BigMem, std::allocator<BigMem> >::max_size() const [7] std::vector<BigMem, std::allocator<BigMem> >::push_back(BigMem&&)
+  [32] Wolf::Drink()          [85] std::vector<Animal*, std::allocator<Animal*> >::_M_check_len(unsigned long, char const*) const [119] std::vector<BigMem, std::allocator<BigMem> >::vector()
+ [101] Wolf::Wolf()           [65] std::vector<Animal*, std::allocator<Animal*> >::size() const [72] std::vector<Animal*, std::allocator<Animal*> >::_S_max_size(std::allocator<Animal*> const&)
+  [33] Mouse::Eat()           [70] std::vector<Animal*, std::allocator<Animal*> >::max_size() const [73] std::vector<Animal*, std::allocator<Animal*> >::_S_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&)
+  [22] Mouse::Name[abi:cxx11]() [107] std::allocator<BigMem>::allocator() [74] std::vector<Animal*, std::allocator<Animal*> >::_S_do_relocate(Animal**, Animal**, Animal**, std::allocator<Animal*>&, std::integral_constant<bool, true>)
+  [34] Mouse::Climb()        [108] std::allocator<Animal*>::allocator() [75] std::vector<Animal*, std::allocator<Animal*> >::_S_use_relocate()
+  [35] Mouse::Drink()        [109] std::allocator<Animal*>::~allocator() [90] void std::vector<Animal*, std::allocator<Animal*> >::_M_realloc_insert<Animal* const&>(__gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >, Animal* const&)
+ [102] Mouse::Mouse()        [110] void std::_Destroy_aux<true>::__destroy<Animal**>(Animal**, Animal**) [76] std::vector<Animal*, std::allocator<Animal*> >::_S_nothrow_relocate(std::integral_constant<bool, true>)
+   [3] Tiger::Eat()           [57] std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_allocate(unsigned long) [29] std::vector<Animal*, std::allocator<Animal*> >::end()
+  [23] Tiger::Name[abi:cxx11]() [111] std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl::_Vector_impl() [30] std::vector<Animal*, std::allocator<Animal*> >::begin()
+  [36] Tiger::Climb()         [58] std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_deallocate(BigMem*, unsigned long) [91] std::vector<Animal*, std::allocator<Animal*> >::push_back(Animal* const&)
+  [37] Tiger::Drink()        [112] std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_impl_data::_Vector_impl_data() [120] std::vector<Animal*, std::allocator<Animal*> >::vector()
+ [103] Tiger::Tiger()         [44] std::_Vector_base<BigMem, std::allocator<BigMem> >::_M_get_Tp_allocator() [28] BigMem* std::__niter_base<BigMem*>(BigMem*)
+   [2] Animal::Live()        [113] std::_Vector_base<BigMem, std::allocator<BigMem> >::_Vector_base() [64] Animal** std::__niter_base<Animal**>(Animal**)
+  [80] Animal::Animal()       [86] std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_allocate(unsigned long) [51] BigMem* std::__relocate_a<BigMem*, BigMem*, std::allocator<BigMem> >(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&)
+  [62] __gnu_cxx::new_allocator<BigMem>::deallocate(BigMem*, unsigned long) [114] std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::_Vector_impl() [77] Animal** std::__relocate_a<Animal**, Animal**, std::allocator<Animal*> >(Animal**, Animal**, Animal**, std::allocator<Animal*>&)
+  [54] __gnu_cxx::new_allocator<BigMem>::allocate(unsigned long, void const*) [115] std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl::~_Vector_impl() [52] std::enable_if<std::__is_bitwise_relocatable<BigMem, void>::value, BigMem*>::type std::__relocate_a_1<BigMem, BigMem>(BigMem*, BigMem*, BigMem*, std::allocator<BigMem>&)
+   [8] void __gnu_cxx::new_allocator<BigMem>::construct<BigMem, BigMem>(BigMem*, BigMem&&) [79] std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_deallocate(Animal**, unsigned long) [78] std::enable_if<std::__is_bitwise_relocatable<Animal*, void>::value, Animal**>::type std::__relocate_a_1<Animal*, Animal*>(Animal**, Animal**, Animal**, std::allocator<Animal*>&)
+ [104] __gnu_cxx::new_allocator<BigMem>::new_allocator() [116] std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_impl_data::_Vector_impl_data() [53] unsigned long const& std::max<unsigned long>(unsigned long const&, unsigned long const&)
+  [81] __gnu_cxx::new_allocator<Animal*>::deallocate(Animal**, unsigned long) [68] std::_Vector_base<Animal*, std::allocator<Animal*> >::_M_get_Tp_allocator() [40] unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)
+  [82] __gnu_cxx::new_allocator<Animal*>::allocate(unsigned long, void const*) [117] std::_Vector_base<Animal*, std::allocator<Animal*> >::_Vector_base() [18] std::remove_reference<BigMem&>::type&& std::move<BigMem&>(BigMem&)
+  [83] void __gnu_cxx::new_allocator<Animal*>::construct<Animal*, Animal* const&>(Animal**, Animal* const&) [118] std::_Vector_base<Animal*, std::allocator<Animal*> >::~_Vector_base() [16] BigMem&& std::forward<BigMem>(std::remove_reference<BigMem>::type&)
+ [105] __gnu_cxx::new_allocator<Animal*>::new_allocator() [63] std::allocator_traits<std::allocator<BigMem> >::deallocate(std::allocator<BigMem>&, BigMem*, unsigned long) [67] Animal* const& std::forward<Animal* const&>(std::remove_reference<Animal* const&>::type&)
+ [106] __gnu_cxx::new_allocator<Animal*>::~new_allocator() [59] std::allocator_traits<std::allocator<BigMem> >::allocate(std::allocator<BigMem>&, unsigned long) [121] void std::_Destroy<Animal**>(Animal**, Animal**)
+  [41] __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::__normal_iterator(BigMem* const&) [45] std::allocator_traits<std::allocator<BigMem> >::max_size(std::allocator<BigMem> const&) [122] void std::_Destroy<Animal**, Animal*>(Animal**, Animal**, std::allocator<Animal*>&)
+  [26] __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::__normal_iterator(Animal** const&) [5] void std::allocator_traits<std::allocator<BigMem> >::construct<BigMem, BigMem>(std::allocator<BigMem>&, BigMem*, BigMem&&) [17] operator new(unsigned long, void*)
+  [24] __gnu_cxx::__normal_iterator<Animal**, std::vector<Animal*, std::allocator<Animal*> > >::operator++() [87] std::allocator_traits<std::allocator<Animal*> >::deallocate(std::allocator<Animal*>&, Animal**, unsigned long)
+  [55] __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >::difference_type __gnu_cxx::operator-<BigMem*, std::vector<BigMem, std::allocator<BigMem> > >(__gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&, __gnu_cxx::__normal_iterator<BigMem*, std::vector<BigMem, std::allocator<BigMem> > > const&) [88] std::allocator_traits<std::allocator<Animal*> >::allocate(std::allocator<Animal*>&, unsigned long)
