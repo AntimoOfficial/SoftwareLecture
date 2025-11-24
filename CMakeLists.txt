@@ -5,13 +5,17 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Qt
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets Concurrent REQUIRED)
 
 # Add executable
-add_executable(file-backup-software src/main.cpp)
+add_executable(file-backup-software
+    src/main.cpp
+    src/BackupEngine.cpp
+    src/BackupTypes.cpp
+)
 
 # Link to Qt
-target_link_libraries(file-backup-software PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(file-backup-software PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Concurrent)
 
 # Include directories
 target_include_directories(file-backup-software PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
