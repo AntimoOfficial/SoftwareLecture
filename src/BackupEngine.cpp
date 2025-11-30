@@ -12,9 +12,12 @@
 #include <QSaveFile>
 
 #include <algorithm>
+#include <array>
 #include <cstdint>
 #include <filesystem>
+#include <memory>
 #include <optional>
+#include <queue>
 #include <vector>
 
 #ifdef Q_OS_UNIX
@@ -29,163 +32,259 @@
 
 namespace
 {
-using Path = std::filesystem::path;
-namespace fs = std::filesystem;
+    using Path = std::filesystem::path;
+    namespace fs = std::filesystem;
 
-struct Header
-{
-    quint64 manifestOffset = 0;
-    quint64 manifestLength = 0;
-};
-
-const QByteArray kPackageMagic = "FBS1";
-constexpr quint32 kPackageVersion = 1;
-
-QString normalizeRelative(const Path &root, const Path &current)
-{
-    std::error_code ec;
-    Path relative = fs::relative(current, root, ec);
-    if (ec)
+    struct Header
     {
-        relative = current.filename();
-    }
-    QString text = QString::fromStdString(relative.generic_string());
-    if (text == ".")
-    {
-        text.clear();
-    }
-    return text;
-}
+        quint64 manifestOffset = 0;
+        quint64 manifestLength = 0;
+    };
 
-FileKind detectKind(const fs::file_status &status)
-{
-    switch (status.type())
-    {
-    case fs::file_type::regular:
-        return FileKind::Regular;
-    case fs::file_type::directory:
-        return FileKind::Directory;
-    case fs::file_type::symlink:
-        return FileKind::Symlink;
-    case fs::file_type::block:
-        return FileKind::Block;
-    case fs::file_type::character:
-        return FileKind::Character;
-    case fs::file_type::fifo:
-        return FileKind::Fifo;
-    case fs::file_type::socket:
-        return FileKind::Socket;
-    default:
-        return FileKind::Unknown;
-    }
-}
+    const QByteArray kPackageMagic = "FBS1";
+    constexpr quint32 kPackageVersion = 1;
 
-bool kindHasData(FileKind kind)
-{
-    return kind == FileKind::Regular;
-}
-
-QString sanitizedName(const QString &text)
-{
-    QString name = text;
-    if (name.isEmpty())
+    QString normalizeRelative(const Path &root, const Path &current)
     {
-        name = "backup";
-    }
-    for (int i = 0; i < name.size(); ++i)
-    {
-        const QChar ch = name.at(i);
-        if (!(ch.isLetterOrNumber() || ch == '_' || ch == '-' || ch == '.'))
+        std::error_code ec;
+        Path relative = fs::relative(current, root, ec);
+        if (ec)
         {
-            name[i] = '_';
+            relative = current.filename();
+        }
+        QString text = QString::fromStdString(relative.generic_string());
+        if (text == ".")
+        {
+            text.clear();
+        }
+        return text;
+    }
+
+    FileKind detectKind(const fs::file_status &status)
+    {
+        switch (status.type())
+        {
+        case fs::file_type::regular:
+            return FileKind::Regular;
+        case fs::file_type::directory:
+            return FileKind::Directory;
+        case fs::file_type::symlink:
+            return FileKind::Symlink;
+        case fs::file_type::block:
+            return FileKind::Block;
+        case fs::file_type::character:
+            return FileKind::Character;
+        case fs::file_type::fifo:
+            return FileKind::Fifo;
+        case fs::file_type::socket:
+            return FileKind::Socket;
+        default:
+            return FileKind::Unknown;
         }
     }
-    return name;
-}
+
+    bool kindHasData(FileKind kind)
+    {
+        return kind == FileKind::Regular;
+    }
+
+    QString sanitizedName(const QString &text)
+    {
+        QString name = text;
+        if (name.isEmpty())
+        {
+            name = "backup";
+        }
+        for (int i = 0; i < name.size(); ++i)
+        {
+            const QChar ch = name.at(i);
+            if (!(ch.isLetterOrNumber() || ch == '_' || ch == '-' || ch == '.'))
+            {
+                name[i] = '_';
+            }
+        }
+        return name;
+    }
 
 #ifdef Q_OS_UNIX
-bool readStat(const QString &path, struct stat &buffer, bool followSymlink)
-{
-    QByteArray pathBytes = QFile::encodeName(path);
-    if (followSymlink)
+    bool readStat(const QString &path, struct stat &buffer, bool followSymlink)
     {
-        return ::stat(pathBytes.constData(), &buffer) == 0;
+        QByteArray pathBytes = QFile::encodeName(path);
+        if (followSymlink)
+        {
+            return ::stat(pathBytes.constData(), &buffer) == 0;
+        }
+        return ::lstat(pathBytes.constData(), &buffer) == 0;
     }
-    return ::lstat(pathBytes.constData(), &buffer) == 0;
-}
 
-QString ownerName(uid_t id)
-{
-    if (struct passwd *pwd = ::getpwuid(id))
+    QString ownerName(uid_t id)
     {
-        return QString::fromLocal8Bit(pwd->pw_name);
+        if (struct passwd *pwd = ::getpwuid(id))
+        {
+            return QString::fromLocal8Bit(pwd->pw_name);
+        }
+        return {};
     }
-    return {};
-}
 
-QString groupName(gid_t id)
-{
-    if (struct group *grp = ::getgrgid(id))
+    QString groupName(gid_t id)
     {
-        return QString::fromLocal8Bit(grp->gr_name);
+        if (struct group *grp = ::getgrgid(id))
+        {
+            return QString::fromLocal8Bit(grp->gr_name);
+        }
+        return {};
     }
-    return {};
-}
 #endif
 
-QByteArray sha256(const QByteArray &data)
-{
-    return QCryptographicHash::hash(data, QCryptographicHash::Sha256).toHex();
-}
+    QByteArray sha256(const QByteArray &data)
+    {
+        return QCryptographicHash::hash(data, QCryptographicHash::Sha256).toHex();
+    }
 
-void applyPermissions(const QString &path, QFile::Permissions permissions)
-{
-    QFile file(path);
-    file.setPermissions(permissions);
-}
+    void applyPermissions(const QString &path, QFile::Permissions permissions)
+    {
+        QFile file(path);
+        file.setPermissions(permissions);
+    }
 
 #ifdef Q_OS_UNIX
-void applyOwnership(const QString &path, quint32 ownerId, quint32 groupId, bool followSymlink)
-{
-    QByteArray encoded = QFile::encodeName(path);
-    if (followSymlink)
+    void applyOwnership(const QString &path, quint32 ownerId, quint32 groupId, bool followSymlink)
     {
-        ::chown(encoded.constData(), static_cast<uid_t>(ownerId), static_cast<gid_t>(groupId));
+        QByteArray encoded = QFile::encodeName(path);
+        if (followSymlink)
+        {
+            ::chown(encoded.constData(), static_cast<uid_t>(ownerId), static_cast<gid_t>(groupId));
+        }
+        else
+        {
+            ::lchown(encoded.constData(), static_cast<uid_t>(ownerId), static_cast<gid_t>(groupId));
+        }
     }
-    else
-    {
-        ::lchown(encoded.constData(), static_cast<uid_t>(ownerId), static_cast<gid_t>(groupId));
-    }
-}
 
-void applyTimestamps(const QString &path, const FileRecord &record, bool followSymlink)
-{
-    struct timespec times[2];
-    times[0].tv_sec = record.accessedAt;
-    times[0].tv_nsec = 0;
-    times[1].tv_sec = record.modifiedAt;
-    times[1].tv_nsec = 0;
-    QByteArray encoded = QFile::encodeName(path);
+    void applyTimestamps(const QString &path, const FileRecord &record, bool followSymlink)
+    {
+        struct timespec times[2];
+        times[0].tv_sec = record.accessedAt;
+        times[0].tv_nsec = 0;
+        times[1].tv_sec = record.modifiedAt;
+        times[1].tv_nsec = 0;
+        QByteArray encoded = QFile::encodeName(path);
 #if defined(__APPLE__)
-    ::utimensat(AT_FDCWD, encoded.constData(), times, followSymlink ? 0 : AT_SYMLINK_NOFOLLOW);
+        ::utimensat(AT_FDCWD, encoded.constData(), times, followSymlink ? 0 : AT_SYMLINK_NOFOLLOW);
 #else
-    ::utimensat(AT_FDCWD, encoded.constData(), times, followSymlink ? 0 : AT_SYMLINK_NOFOLLOW);
+        ::utimensat(AT_FDCWD, encoded.constData(), times, followSymlink ? 0 : AT_SYMLINK_NOFOLLOW);
 #endif
-}
+    }
 #endif
 
-bool ensureParentDir(const QString &filePath)
-{
-    QFileInfo info(filePath);
-    QDir dir;
-    return dir.mkpath(info.path());
-}
+    bool ensureParentDir(const QString &filePath)
+    {
+        QFileInfo info(filePath);
+        QDir dir;
+        return dir.mkpath(info.path());
+    }
 
-QString joinPath(const QString &base, const QString &relative)
-{
-    QDir dir(base);
-    return dir.filePath(relative);
-}
+    QString joinPath(const QString &base, const QString &relative)
+    {
+        QDir dir(base);
+        return dir.filePath(relative);
+    }
+
+    struct HuffmanNode
+    {
+        quint64 freq = 0;
+        int value = -1;
+        int left = -1;
+        int right = -1;
+    };
+
+    int buildHuffmanTree(const std::array<quint64, 256> &freq, std::vector<HuffmanNode> &nodes)
+    {
+        struct Item
+        {
+            quint64 freq = 0;
+            int index = -1;
+        };
+        auto cmp = [](const Item &a, const Item &b) { return a.freq > b.freq; };
+        std::priority_queue<Item, std::vector<Item>, decltype(cmp)> queue(cmp);
+
+        for (int i = 0; i < 256; ++i)
+        {
+            if (freq[i] == 0)
+            {
+                continue;
+            }
+            HuffmanNode node;
+            node.freq = freq[i];
+            node.value = i;
+            nodes.push_back(node);
+            queue.push({node.freq, static_cast<int>(nodes.size() - 1)});
+        }
+
+        if (queue.empty())
+        {
+            return -1;
+        }
+
+        if (queue.size() == 1)
+        {
+            // 只出现一种字节，复制一个零频节点保持编码逻辑
+            HuffmanNode duplicate;
+            duplicate.freq = 0;
+            nodes.push_back(duplicate);
+            const int first = queue.top().index;
+            queue.pop();
+
+            HuffmanNode parent;
+            parent.freq = nodes[first].freq;
+            parent.left = first;
+            parent.right = static_cast<int>(nodes.size() - 1);
+            nodes.push_back(parent);
+            return static_cast<int>(nodes.size() - 1);
+        }
+
+        while (queue.size() > 1)
+        {
+            Item a = queue.top();
+            queue.pop();
+            Item b = queue.top();
+            queue.pop();
+
+            HuffmanNode parent;
+            parent.freq = a.freq + b.freq;
+            parent.left = a.index;
+            parent.right = b.index;
+            nodes.push_back(parent);
+            queue.push({parent.freq, static_cast<int>(nodes.size() - 1)});
+        }
+
+        return queue.top().index;
+    }
+
+    void buildCodes(const std::vector<HuffmanNode> &nodes, int index, QByteArray prefix, std::array<QByteArray, 256> &codes)
+    {
+        if (index < 0 || index >= static_cast<int>(nodes.size()))
+        {
+            return;
+        }
+        const HuffmanNode &node = nodes[static_cast<size_t>(index)];
+        if (node.value >= 0)
+        {
+            // 单节点情况确保至少有一位编码
+            if (prefix.isEmpty())
+            {
+                prefix.append('0');
+            }
+            codes[static_cast<size_t>(node.value)] = prefix;
+            return;
+        }
+        QByteArray leftPrefix = prefix;
+        leftPrefix.append('0');
+        QByteArray rightPrefix = prefix;
+        rightPrefix.append('1');
+        buildCodes(nodes, node.left, leftPrefix, codes);
+        buildCodes(nodes, node.right, rightPrefix, codes);
+    }
 
 } // namespace
 
@@ -232,16 +331,82 @@ BackupResult BackupEngine::performBackup(const BackupOptions &options, const Bac
         return result;
     }
 
-    const QString name = sanitizedName(options.backupName.isEmpty() ? sourceInfo.fileName() : options.backupName);
+    QString rawName = options.backupName.isEmpty() ? sourceInfo.fileName() : options.backupName;
+    QString name = sanitizedName(rawName);
+
+    // Replace characters not allowed on Windows and other control characters with '_'
+    const QString forbidden = R"(<>:"/\\|?*)";
+    QString cleaned;
+    cleaned.reserve(name.size());
+    for (QChar ch : name)
+    {
+        if (ch.unicode() < 0x20 || forbidden.contains(ch))
+            cleaned.append('_');
+        else
+            cleaned.append(ch);
+    }
+
+    // Trim trailing spaces and dots (Windows forbids names ending with space or dot)
+    while (!cleaned.isEmpty() && (cleaned.endsWith(' ') || cleaned.endsWith('.')))
+    {
+        cleaned.chop(1);
+    }
+
+    if (cleaned.isEmpty())
+    {
+        cleaned = "backup";
+    }
+
+    // Avoid reserved Windows device names (CON, PRN, AUX, NUL, COM1..COM9, LPT1..LPT9)
+    QString upper = cleaned.toUpper();
+    bool isReserved = (upper == QLatin1String("CON") || upper == QLatin1String("PRN") ||
+                       upper == QLatin1String("AUX") || upper == QLatin1String("NUL"));
+    if (!isReserved)
+    {
+        if (upper.size() == 4 && upper.startsWith(QLatin1String("COM")) && upper.at(3).isDigit())
+            isReserved = true;
+        if (upper.size() == 4 && upper.startsWith(QLatin1String("LPT")) && upper.at(3).isDigit())
+            isReserved = true;
+    }
+    if (isReserved)
+    {
+        cleaned.append('_');
+    }
+
+    // Limit name length to a safe value for filesystems
+    const int maxLen = 240;
+    if (cleaned.size() > maxLen)
+    {
+        cleaned = cleaned.left(maxLen);
+    }
+
     const QString timestamp = QDateTime::currentDateTimeUtc().toString("yyyyMMdd-hhmmss");
-    const QString identifier = QString("%1_%2").arg(timestamp, name);
+    const QString identifier = QString("%1_%2").arg(timestamp, cleaned);
 
     BackupManifest manifest;
     manifest.backupId = identifier;
-    manifest.rootName = sourceInfo.isDir() ? sourceInfo.fileName() : sourceInfo.fileName();
-    if (manifest.rootName.isEmpty())
     {
-        manifest.rootName = "root";
+        QString rootName = sourceInfo.fileName();
+        if (rootName.isEmpty())
+        {
+            const QString absolutePath = sourceInfo.absoluteFilePath();
+            if (!absolutePath.isEmpty())
+            {
+                QFileInfo absoluteInfo(absolutePath);
+                rootName = absoluteInfo.fileName();
+                if (rootName.isEmpty())
+                {
+                    const QString parentPath = absoluteInfo.absolutePath();
+                    if (!parentPath.isEmpty())
+                        rootName = QFileInfo(parentPath).fileName();
+                    if (rootName.isEmpty())
+                        rootName = absolutePath;
+                }
+            }
+        }
+        if (rootName.isEmpty())
+            rootName = QStringLiteral("root");
+        manifest.rootName = rootName;
     }
     manifest.createdAt = QDateTime::currentDateTimeUtc().toString(Qt::ISODate);
     manifest.sourcePath = sourceInfo.absoluteFilePath();
@@ -327,7 +492,8 @@ BackupResult BackupEngine::performBackup(const BackupOptions &options, const Bac
         stream << quint64(0);
     }
 
-    auto writeDataToDirectory = [&](const QString &relativePath, const QByteArray &storedData) -> bool {
+    auto writeDataToDirectory = [&](const QString &relativePath, const QByteArray &storedData) -> bool
+    {
         if (relativePath.isEmpty())
         {
             return false;
@@ -397,9 +563,7 @@ BackupResult BackupEngine::performBackup(const BackupOptions &options, const Bac
         }
 
 #ifdef Q_OS_UNIX
-        struct stat st
-        {
-        };
+        struct stat st{};
         if (readStat(QString::fromStdString(path.string()), st, kind != FileKind::Symlink))
         {
 #if defined(__APPLE__)
@@ -907,7 +1071,6 @@ bool BackupEngine::finalizePackage(QFile &file, const BackupManifest &manifest, 
     return true;
 }
 
-
 QByteArray BackupEngine::readStoredData(const BackupManifest &manifest, const FileRecord &record, const QString &password,
                                         QString &error) const
 {
@@ -984,19 +1147,179 @@ QByteArray BackupEngine::decrypt(const QByteArray &data, const QString &password
 
 QByteArray BackupEngine::compressData(const QByteArray &data) const
 {
-    return qCompress(data, 9);
+    if (data.isEmpty())
+    {
+        return QByteArray();
+    }
+
+    std::array<quint64, 256> freq{};
+    for (char ch : data)
+    {
+        const unsigned char index = static_cast<unsigned char>(ch);
+        ++freq[static_cast<size_t>(index)];
+    }
+
+    std::vector<HuffmanNode> nodes;
+    nodes.reserve(512);
+    const int rootIndex = buildHuffmanTree(freq, nodes);
+    if (rootIndex < 0)
+    {
+        return QByteArray();
+    }
+
+    std::array<QByteArray, 256> codes;
+    buildCodes(nodes, rootIndex, QByteArray(), codes);
+
+    quint64 bitLength = 0;
+    for (int i = 0; i < 256; ++i)
+    {
+        if (!codes[static_cast<size_t>(i)].isEmpty())
+        {
+            bitLength += freq[static_cast<size_t>(i)] * static_cast<quint64>(codes[static_cast<size_t>(i)].size());
+        }
+    }
+
+    QByteArray bitData;
+    bitData.reserve(static_cast<int>((bitLength + 7) / 8));
+    quint8 current = 0;
+    int bitPos = 0;
+    auto pushBit = [&](bool one) {
+        current |= static_cast<quint8>((one ? 1 : 0) << (7 - bitPos));
+        ++bitPos;
+        if (bitPos == 8)
+        {
+            bitData.append(static_cast<char>(current));
+            current = 0;
+            bitPos = 0;
+        }
+    };
+
+    for (char ch : data)
+    {
+        const QByteArray &code = codes[static_cast<size_t>(static_cast<unsigned char>(ch))];
+        for (char bitChar : code)
+        {
+            pushBit(bitChar == '1');
+        }
+    }
+    if (bitPos > 0)
+    {
+        bitData.append(static_cast<char>(current));
+    }
+
+    QByteArray output;
+    QDataStream stream(&output, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::LittleEndian);
+
+    static const char magic[4] = {'H', 'F', '0', '1'};
+    stream.writeRawData(magic, 4);
+    stream << static_cast<quint64>(data.size());
+    for (quint64 value : freq)
+    {
+        stream << value;
+    }
+    stream << bitLength;
+    stream.writeRawData(bitData.constData(), bitData.size());
+
+    return output;
 }
 
 QByteArray BackupEngine::decompressData(const QByteArray &data, quint64 expectedSize, bool &ok) const
 {
-    QByteArray output = qUncompress(data);
-    if (output.isEmpty() && expectedSize > 0)
+    if (data.isEmpty())
+    {
+        ok = expectedSize == 0;
+        return {};
+    }
+
+    QDataStream stream(data);
+    stream.setByteOrder(QDataStream::LittleEndian);
+
+    char magic[4] = {};
+    if (stream.readRawData(magic, 4) != 4 || magic[0] != 'H' || magic[1] != 'F')
     {
         ok = false;
+        return {};
     }
-    else
+
+    quint64 originalSize = 0;
+    stream >> originalSize;
+    std::array<quint64, 256> freq{};
+    for (int i = 0; i < 256; ++i)
     {
-        ok = true;
+        stream >> freq[static_cast<size_t>(i)];
+    }
+
+    quint64 bitLength = 0;
+    stream >> bitLength;
+
+    const qint64 headerSize = 4 + 8 + (256 * 8) + 8;
+    if (data.size() < headerSize)
+    {
+        ok = false;
+        return {};
+    }
+
+    QByteArray bitData = data.mid(headerSize);
+
+    std::vector<HuffmanNode> nodes;
+    nodes.reserve(512);
+    const int rootIndex = buildHuffmanTree(freq, nodes);
+    if (rootIndex < 0)
+    {
+        ok = (expectedSize == 0 && originalSize == 0);
+        return {};
+    }
+
+    QByteArray output;
+    output.reserve(static_cast<int>(originalSize));
+
+    // 单节点：不需要读取位串即可恢复
+    if (nodes[static_cast<size_t>(rootIndex)].value >= 0)
+    {
+        output = QByteArray(static_cast<int>(originalSize),
+                            static_cast<char>(nodes[static_cast<size_t>(rootIndex)].value));
+        ok = (output.size() == static_cast<int>(originalSize) &&
+              (expectedSize == 0 || originalSize == expectedSize));
+        return output;
+    }
+
+    const quint64 availableBits = static_cast<quint64>(bitData.size()) * 8;
+    if (bitLength > availableBits)
+    {
+        ok = false;
+        return {};
+    }
+
+    int nodeIndex = rootIndex;
+    quint64 bitsRead = 0;
+    for (quint64 i = 0; i < bitLength && output.size() < static_cast<int>(originalSize); ++i)
+    {
+        const int byteIndex = static_cast<int>(i / 8);
+        const int bitOffset = 7 - static_cast<int>(i % 8);
+        const quint8 byteValue = static_cast<quint8>(bitData.at(byteIndex));
+        const bool one = (byteValue >> bitOffset) & 0x1;
+
+        nodeIndex = one ? nodes[static_cast<size_t>(nodeIndex)].right : nodes[static_cast<size_t>(nodeIndex)].left;
+        if (nodeIndex < 0 || nodeIndex >= static_cast<int>(nodes.size()))
+        {
+            ok = false;
+            return {};
+        }
+        const HuffmanNode &node = nodes[static_cast<size_t>(nodeIndex)];
+        if (node.value >= 0)
+        {
+            output.append(static_cast<char>(node.value));
+            nodeIndex = rootIndex;
+        }
+        ++bitsRead;
+    }
+
+    ok = (output.size() == static_cast<int>(originalSize) &&
+          (expectedSize == 0 || originalSize == expectedSize));
+    if (!ok)
+    {
+        output.clear();
     }
     return output;
 }
@@ -1114,9 +1437,8 @@ void BackupEngine::enforceRetention(const BackupOptions &options, const QString 
         }
         candidates.push_back(info);
     }
-    std::sort(candidates.begin(), candidates.end(), [](const QFileInfo &a, const QFileInfo &b) {
-        return a.lastModified() > b.lastModified();
-    });
+    std::sort(candidates.begin(), candidates.end(), [](const QFileInfo &a, const QFileInfo &b)
+              { return a.lastModified() > b.lastModified(); });
 
     while (candidates.size() > options.retentionCount)
     {

@@ -24,7 +24,6 @@
 #include <QTime>
 #include <QTimeEdit>
 #include <QTimer>
-#include <QToolButton>
 #include <QVBoxLayout>
 #include <QtConcurrent/QtConcurrent>
 #include <QtGlobal>
@@ -224,14 +223,11 @@ void MainWindow::setupRestoreTab(QWidget *parent)
     QGridLayout *grid = new QGridLayout();
     restoreBackupEdit = new QLineEdit(parent);
 
-    QToolButton *backupSelectButton = new QToolButton(parent);
-    backupSelectButton->setText(QStringLiteral("选择..."));
+    QPushButton *backupSelectButton = new QPushButton(QStringLiteral("选择..."), parent);
     QMenu *selectMenu = new QMenu(backupSelectButton);
     selectMenu->addAction(QStringLiteral("备份文件"), this, &MainWindow::chooseRestoreBackupFile);
     selectMenu->addAction(QStringLiteral("备份目录"), this, &MainWindow::chooseRestoreBackupDirectory);
     backupSelectButton->setMenu(selectMenu);
-    backupSelectButton->setPopupMode(QToolButton::MenuButtonPopup);
-    connect(backupSelectButton, &QToolButton::clicked, this, &MainWindow::chooseRestoreBackupFile);
 
     grid->addWidget(new QLabel(QStringLiteral("备份路径:"), parent), 0, 0);
     grid->addWidget(restoreBackupEdit, 0, 1);
