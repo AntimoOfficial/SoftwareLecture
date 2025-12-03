@@ -26,6 +26,24 @@ enum class StorageMode
     Package
 };
 
+// 压缩方法枚举
+enum class CompressionMethod
+{
+    None,       // 不压缩
+    Huffman,    // 哈夫曼编码
+    RLE,        // 游程编码 (Run-Length Encoding)
+    Zlib        // zlib 压缩 (使用 Qt 内置)
+};
+
+// 加密方法枚举
+enum class EncryptionMethod
+{
+    None,       // 不加密
+    XOR,        // 简单异或加密
+    RC4,        // RC4 流加密
+    AES256      // AES-256 加密 (简化实现)
+};
+
 struct FileRecord
 {
     QString relativePath;
@@ -60,6 +78,8 @@ struct BackupManifest
     StorageMode storageMode = StorageMode::Directory;
     bool compressed = false;
     bool encrypted = false;
+    CompressionMethod compressionMethod = CompressionMethod::None;
+    EncryptionMethod encryptionMethod = EncryptionMethod::None;
     bool preserveMetadata = true;
     bool includeSpecialFiles = true;
     bool verificationEnabled = true;
@@ -82,6 +102,8 @@ struct BackupOptions
     QString backupName;
     bool compress = false;
     bool encrypt = false;
+    CompressionMethod compressionMethod = CompressionMethod::Huffman;
+    EncryptionMethod encryptionMethod = EncryptionMethod::XOR;
     bool package = false;
     bool preserveMetadata = true;
     bool includeSpecialFiles = true;
@@ -136,6 +158,12 @@ struct BackupEngineCallbacks
 
 QString fileKindToString(FileKind kind);
 FileKind fileKindFromString(const QString &value);
+
+QString compressionMethodToString(CompressionMethod method);
+CompressionMethod compressionMethodFromString(const QString &value);
+
+QString encryptionMethodToString(EncryptionMethod method);
+EncryptionMethod encryptionMethodFromString(const QString &value);
 
 QJsonObject fileRecordToJson(const FileRecord &record);
 FileRecord fileRecordFromJson(const QJsonObject &object);

@@ -39,8 +39,30 @@ private:
     QByteArray encrypt(const QByteArray &data, const QString &password) const;
     QByteArray decrypt(const QByteArray &data, const QString &password, bool &ok) const;
 
+    // 多种加密方法
+    QByteArray encryptXOR(const QByteArray &data, const QString &password) const;
+    QByteArray decryptXOR(const QByteArray &data, const QString &password) const;
+    QByteArray encryptRC4(const QByteArray &data, const QString &password) const;
+    QByteArray decryptRC4(const QByteArray &data, const QString &password) const;
+    QByteArray encryptAES256(const QByteArray &data, const QString &password) const;
+    QByteArray decryptAES256(const QByteArray &data, const QString &password, bool &ok) const;
+
     QByteArray compressData(const QByteArray &data) const;
     QByteArray decompressData(const QByteArray &data, quint64 expectedSize, bool &ok) const;
+
+    // 多种压缩方法
+    QByteArray compressHuffman(const QByteArray &data) const;
+    QByteArray decompressHuffman(const QByteArray &data, quint64 expectedSize, bool &ok) const;
+    QByteArray compressRLE(const QByteArray &data) const;
+    QByteArray decompressRLE(const QByteArray &data, quint64 expectedSize, bool &ok) const;
+    QByteArray compressZlib(const QByteArray &data) const;
+    QByteArray decompressZlib(const QByteArray &data, quint64 expectedSize, bool &ok) const;
+
+    // 带方法参数的压缩/加密接口
+    QByteArray compressData(const QByteArray &data, CompressionMethod method) const;
+    QByteArray decompressData(const QByteArray &data, CompressionMethod method, quint64 expectedSize, bool &ok) const;
+    QByteArray encrypt(const QByteArray &data, const QString &password, EncryptionMethod method) const;
+    QByteArray decrypt(const QByteArray &data, const QString &password, EncryptionMethod method, bool &ok) const;
 
     QFile::Permissions toQtPermissions(quint32 permissions) const;
     quint32 toStoredPermissions(QFile::Permissions permissions) const;

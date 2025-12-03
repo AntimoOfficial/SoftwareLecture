@@ -120,6 +120,76 @@ FileKind fileKindFromString(const QString &value)
     return FileKind::Unknown;
 }
 
+QString compressionMethodToString(CompressionMethod method)
+{
+    switch (method)
+    {
+    case CompressionMethod::None:
+        return "none";
+    case CompressionMethod::Huffman:
+        return "huffman";
+    case CompressionMethod::RLE:
+        return "rle";
+    case CompressionMethod::Zlib:
+        return "zlib";
+    default:
+        return "none";
+    }
+}
+
+CompressionMethod compressionMethodFromString(const QString &value)
+{
+    const QString normalized = value.toLower();
+    if (normalized == "huffman")
+    {
+        return CompressionMethod::Huffman;
+    }
+    if (normalized == "rle")
+    {
+        return CompressionMethod::RLE;
+    }
+    if (normalized == "zlib")
+    {
+        return CompressionMethod::Zlib;
+    }
+    return CompressionMethod::None;
+}
+
+QString encryptionMethodToString(EncryptionMethod method)
+{
+    switch (method)
+    {
+    case EncryptionMethod::None:
+        return "none";
+    case EncryptionMethod::XOR:
+        return "xor";
+    case EncryptionMethod::RC4:
+        return "rc4";
+    case EncryptionMethod::AES256:
+        return "aes256";
+    default:
+        return "none";
+    }
+}
+
+EncryptionMethod encryptionMethodFromString(const QString &value)
+{
+    const QString normalized = value.toLower();
+    if (normalized == "xor")
+    {
+        return EncryptionMethod::XOR;
+    }
+    if (normalized == "rc4")
+    {
+        return EncryptionMethod::RC4;
+    }
+    if (normalized == "aes256")
+    {
+        return EncryptionMethod::AES256;
+    }
+    return EncryptionMethod::None;
+}
+
 QJsonObject fileRecordToJson(const FileRecord &record)
 {
     QJsonObject object;
@@ -183,6 +253,8 @@ QJsonObject manifestToJson(const BackupManifest &manifest)
     object["storageMode"] = manifest.storageMode == StorageMode::Package ? "package" : "directory";
     object["compressed"] = manifest.compressed;
     object["encrypted"] = manifest.encrypted;
+    object["compressionMethod"] = compressionMethodToString(manifest.compressionMethod);
+    object["encryptionMethod"] = encryptionMethodToString(manifest.encryptionMethod);
     object["preserveMetadata"] = manifest.preserveMetadata;
     object["includeSpecial"] = manifest.includeSpecialFiles;
     object["verify"] = manifest.verificationEnabled;
@@ -204,6 +276,17 @@ BackupManifest manifestFromJson(const QJsonObject &object)
     manifest.storageMode = object.value("storageMode").toString() == "package" ? StorageMode::Package : StorageMode::Directory;
     manifest.compressed = object.value("compressed").toBool();
     manifest.encrypted = object.value("encrypted").toBool();
+    manifest.compressionMethod = compressionMethodFromString(object.value("compressionMethod").toString());
+    manifest.encryptionMethod = encryptionMethodFromString(object.value("encryptionMethod").toString());
+    // 兼容旧版本：如果没有方法字段但标记为压缩/加密，默认使用旧方法
+    if (manifest.compressed && manifest.compressionMethod == CompressionMethod::None)
+    {
+        manifest.compressionMethod = CompressionMethod::Huffman;
+    }
+    if (manifest.encrypted && manifest.encryptionMethod == EncryptionMethod::None)
+    {
+        manifest.encryptionMethod = EncryptionMethod::XOR;
+    }
     manifest.preserveMetadata = object.value("preserveMetadata").toBool(true);
     manifest.includeSpecialFiles = object.value("includeSpecial").toBool(true);
     manifest.verificationEnabled = object.value("verify").toBool(true);
