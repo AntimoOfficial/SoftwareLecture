@@ -4,6 +4,9 @@ project(FileBackupSoftware LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Enable testing
+option(BUILD_TESTS "Build unit tests" ON)
+
 # Find Qt
 find_package(Qt6 COMPONENTS Core Gui Widgets Concurrent REQUIRED)
 
@@ -21,4 +24,7 @@ target_link_libraries(file-backup-software PRIVATE Qt6::Core Qt6::Gui Qt6::Widge
 target_include_directories(file-backup-software PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Add tests
-add_subdirectory(tests)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
